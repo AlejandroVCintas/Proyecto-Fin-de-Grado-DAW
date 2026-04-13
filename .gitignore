@@ -1,0 +1,36 @@
+# Archivos .NET y C# 
+
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.db
+*.sqlite
+*.log
+
+# Base de datos 
+*.db
+*.sqlite
+stepsdb
+
+# VsCode 
+.vs/
+*.csproj.user
+
+# Node y React #
+node_modules
+dost/
+build/
+
+# Logs 
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Entorno
+.env
+
+# Otros
+coverage/
+

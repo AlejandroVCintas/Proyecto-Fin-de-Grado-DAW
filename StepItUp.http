@@ -1,0 +1,6 @@
+@StepItUp_HostAddress = http://localhost:5030
+
+GET {{StepItUp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

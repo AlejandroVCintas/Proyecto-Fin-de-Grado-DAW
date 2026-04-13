@@ -1,0 +1,52 @@
+.home-page {
+  max-width: 500px;
+  margin: auto;
+}
+
+/*Tarjeta pasos */
+.card {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+}
+
+/*Formulario pasos */
+
+.form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/*Botón añadir */
+.btn-primary {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+/*Lista pasos */
+.steps-list {
+  list-style: none;
+  padding: 0;
+}
+
+.steps-list li {
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ddd;
+}
