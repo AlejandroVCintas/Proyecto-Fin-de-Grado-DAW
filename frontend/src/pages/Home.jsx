@@ -30,7 +30,6 @@ function Home() {
     await addStep({
       date,
       steps: parseInt(count),
-      userId: 1
     });
 
   // Se limpia el formulario y se actualiza la lista de pasos
