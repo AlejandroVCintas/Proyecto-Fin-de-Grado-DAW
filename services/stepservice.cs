@@ -1,3 +1,4 @@
+using System.Linq;
 public class StepService
 {
     // Conexión con base de datos
@@ -31,5 +32,22 @@ public class StepService
 
         _context.Steps.Remove(step);
         _context.SaveChanges();
+    }
+
+    public List<Step> GetToday()
+    {
+        var today = DateTime.Today;
+
+        // Se devuelven los pasos con la fecha de hoy
+        return _context.Steps
+        .Where(s => s.Date == today)
+        .ToList();
+    }
+
+    public List<Step> GetWeek()
+    {
+
+        // Versión inicial, actualmente igual a GetAll
+        return _context.Steps.ToList();
     }
 }

@@ -32,4 +32,18 @@ public class StepsController : ControllerBase
         _service.Delete(id);
         return NoContent();
     }
+
+    // Se deuvuelven los pasos diarios
+    [HttpGet("today")]
+    public IActionResult GetToday()
+    {
+        return Ok(_service.GetToday());
+    }
+
+    // Se devuelven los pasos semanales
+    [HttpGet("week")]
+    public IActionResult GetWeek()
+    {
+        return Ok(_service.GetWeek());
+    }
 }
