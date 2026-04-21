@@ -5,7 +5,7 @@ public class Step
     public int? Id { get; set; }
 
     [Required]
-    public string Date { get; set; }
+    public DateTime Date { get; set; }
 
     [Range(1, 100000)]
     public int Steps { get; set; }
