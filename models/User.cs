@@ -16,5 +16,5 @@ public class User
     public DateTime RegisterDate { get; set; }
     public int Weight { get; set; }
     public int Height { get; set; }
-    public List<Step> Steps { get; set; }
+    public List<Step> Steps { get; set; } = new List<Step>();
 }

@@ -27,11 +27,28 @@ public class StepService
     public void Delete(int id)
     {
         var step = _context.Steps.Find(id);
+
         // Si el registro no existe se vuelve
         if (step == null) return;
 
         _context.Steps.Remove(step);
         _context.SaveChanges();
+    }
+
+    public Step? Update(int id, Step updatedStep)
+    {
+        var step = _context.Steps.Find(id);
+
+        // Si no hay datos no se devuelve nada
+        if (step == null) return null;
+
+        // Se actualizan los campos necesarios
+        step.Date = updatedStep.Date;
+        step.Steps = updatedStep.Steps;
+        step.UserId = updatedStep.UserId;
+
+        _context.SaveChanges();
+        return step;
     }
 
     public List<Step> GetToday()
@@ -40,7 +57,7 @@ public class StepService
 
         // Se devuelven los pasos con la fecha de hoy
         return _context.Steps
-        .Where(s => s.Date == today)
+        .Where(s => s.Date.Date == today)
         .ToList();
     }
 

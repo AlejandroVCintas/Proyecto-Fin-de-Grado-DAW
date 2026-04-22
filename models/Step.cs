@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel.DataAnnotations;
 public class Step
 {
-    public int? Id { get; set; }
+    public int Id { get; set; }
 
     [Required]
     public DateTime Date { get; set; }

@@ -33,6 +33,19 @@ public class StepsController : ControllerBase
         return NoContent();
     }
 
+    // Se actualizan los pasos según la ID.
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, Step step)
+    {
+        var updated = _service.Update(id, step);
+
+        // Si el campo esta vacío mandará un error.
+        if (updated == null)
+            return NotFound();
+
+        return Ok(updated);
+    }
+
     // Se deuvuelven los pasos diarios
     [HttpGet("today")]
     public IActionResult GetToday()
