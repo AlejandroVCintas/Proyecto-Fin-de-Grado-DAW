@@ -37,6 +37,7 @@ public class StepsController : ControllerBase
     [HttpPut("{id}")]
     public IActionResult Update(int id, Step step)
     {
+        step.Id = id;
         var updated = _service.Update(id, step);
 
         // Si el campo esta vacío mandará un error.
