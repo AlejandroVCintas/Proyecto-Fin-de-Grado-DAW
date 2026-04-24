@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Stats from "./pages/Stats";
 
 function App() {
-  const [currentpage, setPage] = useState("home");
-
   return (
-    <div>
-      <nav style={{ padding: 10 }}>
-        <button onClick={() => setPage("home")}>Inicio</button>
-        <button onClick={() => setPage("stats")}>Estadísticas</button>
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Inicio</Link>
+        <Link to="/stats">Estadísticas</Link>
       </nav>
 
-      {currentpage === "home" && <Home />}
-      {currentpage === "stats" && <Stats />}
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/stats" element={<Stats />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
