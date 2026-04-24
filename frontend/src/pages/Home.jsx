@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getSteps, addStep } from "../services/api";
-import "./Home.css";
+import { getSteps, addStep } from "../frontservices/api";
 import { deleteStep } from "../frontservices/api";
+import "./Home.css";
 
 function Home() {
 

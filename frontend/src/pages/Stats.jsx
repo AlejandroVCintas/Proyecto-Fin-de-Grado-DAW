@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getToday, getWeek } from "../services/api";
+import { getToday, getWeek } from "../frontservices/api";
 import "./Stats.css";
 
 function Stats() {

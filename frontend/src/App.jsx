@@ -5,7 +5,7 @@ import Stats from "./pages/Stats";
 function App() {
   return (
     <BrowserRouter>
-      <nav>
+      <nav className="navbar">
         <Link to="/">Inicio</Link>
         <Link to="/stats">Estadísticas</Link>
       </nav>
