@@ -25,7 +25,7 @@ public class AuthController : ControllerBase
 
     // Login de usuario ya creado 
     [HttpPost("login")]
-    public IActionResult Login(User login)
+    public IActionResult Login(LoginDto login)
     {
         // El usuario introducido debe coincidir con uno ya creado en la base de datos
         var user = _context.Users
