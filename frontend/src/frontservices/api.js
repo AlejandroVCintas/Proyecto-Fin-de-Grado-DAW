@@ -1,13 +1,19 @@
 import axios from "axios";
 
-const API = "http://localhost:5030/api";
-
 const api = axios.create({
-  baseURL: API,
-  headers: {
-    "Content-Type": "application/json"
-  }
+  baseURL: "http://localhost:5030/api",
 });
+
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
+
 
 // Exportamos los endpoints del backend
 export const getSteps = async () => {
@@ -39,9 +45,6 @@ export const getWeek = async () => {
   return res.data;
 };
 
-
-// Endpoints de registro e inico de sesión (todavía no aplicados)
-
 export const register = async (user) => {
   const res = await api.post("/auth/register", user);
   return res.data;
@@ -51,3 +54,5 @@ export const login = async (user) => {
   const res = await api.post("/auth/login", user);
   return res.data;
 };
+
+export default api;

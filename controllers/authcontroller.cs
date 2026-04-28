@@ -1,5 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 
 [ApiController]
 [Route("api/auth")]
@@ -7,10 +12,12 @@ public class AuthController : ControllerBase
 {
     // Contexto de la base de datos para poder hacer uso de la tabla Users
     private readonly AppDbContext _context;
+    private readonly IConfiguration _config;
 
-    public AuthController(AppDbContext context)
+    public AuthController(AppDbContext context, IConfiguration config)
     {
         _context = context;
+        _config = config;
     }
 
     // Registro de usuario en la base de datos
@@ -35,6 +42,25 @@ public class AuthController : ControllerBase
         if (user == null)
             return Unauthorized();
 
-        return Ok(user);
+        var keyString = _config["Jwt:Key"];
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(keyString));
+
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+        var claims = new[]
+        {
+            new Claim(ClaimTypes.Name, user.Email),
+            new Claim("userId", user.Id.ToString())
+        };
+
+        var token = new JwtSecurityToken(
+            claims: claims,
+            expires: DateTime.Now.AddHours(2),
+            signingCredentials: creds
+        );
+
+        var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+
+        return Ok(new { token });
     }
 }

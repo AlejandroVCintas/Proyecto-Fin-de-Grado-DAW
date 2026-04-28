@@ -1,34 +1,51 @@
+:root {
+  --primary: #4CAF50;
+  --secondary: #2196F3;
+  --background: #F5F7FA;
+  --text: #333333;
+  --success: #FFC107;
+}
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #F5F7FA;
-  color: #333;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
 }
 
 .app-container {
-  min-height: 100vh;
+  max-width: 420px;
+  margin: 0 auto;
   padding: 20px;
+  padding-bottom: 80px;
 }
 
 .navbar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 420px;
+
   display: flex;
-  justify-content: center;
-  gap: 20px; 
-  padding: 15px;
-  background-color: white;
-  border-bottom: 1px solid #ddd;
+  justify-content: space-around;
+  align-items: center;
+
+  background: white;
+  padding: 12px 0;
+
+  border-top: 1px solid #eee;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
 }
 
-.nav-button {
-  background-color:#2196F3;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
+.navbar a {
+  font-size: 22px;
+  text-decoration: none;
+  color: #999;
 }
 
-.nav-button:hover {
-  background-color: #1976D2;
+.navbar a.active {
+  color: var(--primary);
+  transform: scale(1.2);
 }

@@ -15,29 +15,33 @@ function Auth() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try{
+      if (isLogin) {
+        // Login de usuario
+        await login({
+          email: form.email,
+          passwordHash: form.password,
+        });
+        alert("Login correcto");
+        // Se redirige al usuario directamente a la pestaña Inicio
+        localStorage.setItem("token", res.token);
+        navigate("/home");
+      } else {
+        // Registro de usuario
+        await register({
+          name: form.name,
+          email: form.email,
+          passwordHash: form.password,
+          registerDate: new Date().toISOString(),
+          weight: 0,
+          height: 0,
+        });
+        alert("Usuario creado");
 
-    if (isLogin) {
-      // Login de usuario
-      await login({
-        email: form.email,
-        passwordHash: form.password,
-      });
-      alert("Login correcto");
-      // Se redirige al usuario directamente a la pestaña Inicio
-      navigate("/home");
-    } else {
-      // Registro de usuario
-      await register({
-        name: form.name,
-        email: form.email,
-        passwordHash: form.password,
-        registerDate: new Date().toISOString(),
-        weight: 0,
-        height: 0,
-      });
-      alert("Usuario creado");
-
-      setIsLogin(true);
+        setIsLogin(true);
+      }
+    } catch {
+      alert("Error en autenticación");
     }
   };
 
