@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -19,9 +20,14 @@ public class StepsController : ControllerBase
     }
 
     // Se reciben datos del frontend y se guardan como registro
+    [Authorize]
     [HttpPost]
     public IActionResult Post(Step step)
     {
+        // Validación de datos antes de guardarlos
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
         return Ok(_service.Add(step));
     }
 

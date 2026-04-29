@@ -63,8 +63,10 @@ public class StepService
 
     public List<Step> GetWeek()
     {
+        var weekAgo = DateTime.Today.AddDays(-7);
 
-        // Versión inicial, actualmente igual a GetAll
-        return _context.Steps.ToList();
+        return _context.Steps
+            .Where(s => s.Date >= weekAgo)
+            .ToList();
     }
 }

@@ -18,7 +18,7 @@ function Auth() {
     try{
       if (isLogin) {
         // Login de usuario
-        await login({
+        const res = await login({
           email: form.email,
           passwordHash: form.password,
         });
