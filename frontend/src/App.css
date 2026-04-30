@@ -26,7 +26,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 420px;
+  max-width: 400px;
 
   display: flex;
   justify-content: space-around;
@@ -48,4 +48,19 @@ body {
 .navbar a.active {
   color: var(--primary);
   transform: scale(1.2);
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 10px 15px;
+}
+
+
+.logo-tfg {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }

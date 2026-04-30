@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, useLocation, NavLink } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, NavLink, useNavigate } from "react-router-dom";
+import logo from "./assets/logo-tfg.png";
 import Home from "./pages/Home";
 import Stats from "./pages/Stats";
 import Auth from "./pages/Auth";
@@ -6,19 +7,39 @@ import Auth from "./pages/Auth";
 function Layout() {
   const location = useLocation();
   const hideNavbar = location.pathname === "/";
+  const hideTopBar = location.pathname === "/";
+
+  const navigate = useNavigate();
+  const isAuth = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
 
   return (
     <>
+      {!hideTopBar && (
+        <div className="top-bar">
+          <img src={logo} className="logo-tfg" />
+        </div>
+      )}
+
       <Routes>
         <Route path="/" element={<Auth />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/stats" element={<Stats />} />
+        <Route path="/home" element={isAuth ? <Home /> : <Auth />} />
+        <Route path="/stats" element={isAuth ? <Stats /> : <Auth />} />
       </Routes>
 
       {!hideNavbar && (
         <nav className="navbar">
-          <NavLink to="/home">🏠</NavLink>
-          <NavLink to="/stats">📊</NavLink>
+          <NavLink to="/home">🏠Inicio   </NavLink>
+          <NavLink to="/stats">📊Estadísticas  </NavLink>
+
+          <button onClick={handleLogout} className="logout-btn">
+            🚪Salir
+          </button>
         </nav>
       )}
     </>

@@ -42,7 +42,11 @@ public class AuthController : ControllerBase
         if (user == null)
             return Unauthorized();
 
-        var keyString = _config["Jwt:Key"];
+        var keyString = _config.GetValue<string>("Jwt:Key");
+
+        if (string.IsNullOrEmpty(keyString))
+            return StatusCode(500, "JWT Key no encontrada");
+
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(keyString));
 
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -61,6 +65,6 @@ public class AuthController : ControllerBase
 
         var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
-        return Ok(new { token });
+        return Ok(new { token = jwt });
     }
 }
