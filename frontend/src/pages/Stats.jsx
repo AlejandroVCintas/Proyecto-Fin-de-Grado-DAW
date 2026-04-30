@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getToday, getWeek } from "../frontservices/api";
 import "./Stats.css";
+import logo from "../assets/logo-tfg.png";
 
 import {
   Chart as ChartJS,
@@ -52,8 +53,11 @@ function Stats() {
 
   return (
     <div className="stats-page">
-      <h1>Estadísticas</h1>
-
+       <div className="header">
+            <img src={logo} className="logo-inline" />
+            <h1>Estadísticas</h1>
+        </div>
+      
       {/* TARJETA PASOS DIARIO */}
       <div className="card">
         <h2>Pasos de hoy</h2>

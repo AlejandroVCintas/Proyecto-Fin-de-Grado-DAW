@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getSteps, addStep } from "../frontservices/api";
 import { deleteStep } from "../frontservices/api";
 import "./Home.css";
+import logo from "../assets/logo-tfg.png";
 
 function Home() {
 
@@ -53,7 +54,11 @@ function Home() {
   
   return (
     <div className="home-page">
-      <h1>Inicio</h1>
+
+      <div className="header">
+        <img src={logo} className="logo-inline" />
+        <h1>Inicio</h1>
+      </div>
 
       {/* FORMULARIO PASOS */}
       <div className="card">

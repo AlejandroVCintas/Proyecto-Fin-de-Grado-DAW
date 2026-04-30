@@ -5,12 +5,11 @@
   padding: 20px;
   background-color: #F5F7FA;
   min-height: 100vh;
-  padding-bottom: 80px;
+  padding-bottom: 0;
 }
 
 /*Tarjeta pasos */
 .card {
-  background-color: white;
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 20px;
@@ -78,4 +77,10 @@
 
 .steps-list button:hover {
   background: #e60000;
+}
+
+.header {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
 }

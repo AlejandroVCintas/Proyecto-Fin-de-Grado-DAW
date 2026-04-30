@@ -7,7 +7,7 @@ import Auth from "./pages/Auth";
 function Layout() {
   const location = useLocation();
   const hideNavbar = location.pathname === "/";
-  const hideTopBar = location.pathname === "/";
+  const hideHeader = location.pathname === "/";
 
   const navigate = useNavigate();
   const isAuth = localStorage.getItem("token");
@@ -18,26 +18,24 @@ function Layout() {
   };
 
 
-  return (
+    return (
     <>
-      {!hideTopBar && (
-        <div className="top-bar">
-          <img src={logo} className="logo-tfg" />
-        </div>
-      )}
+      <div className="card-container">
+      
+        <Routes>
+          <Route path="/" element={<Auth />} />
+          <Route path="/home" element={isAuth ? <Home /> : <Auth />} />
+          <Route path="/stats" element={isAuth ? <Stats /> : <Auth />} />
+        </Routes>
 
-      <Routes>
-        <Route path="/" element={<Auth />} />
-        <Route path="/home" element={isAuth ? <Home /> : <Auth />} />
-        <Route path="/stats" element={isAuth ? <Stats /> : <Auth />} />
-      </Routes>
+      </div>
 
       {!hideNavbar && (
         <nav className="navbar">
-          <NavLink to="/home">🏠Inicio   </NavLink>
-          <NavLink to="/stats">📊Estadísticas  </NavLink>
+          <NavLink to="/home">🏠Inicio</NavLink>
+          <NavLink to="/stats">📊Estadísticas</NavLink>
 
-          <button onClick={handleLogout} className="logout-btn">
+         <button onClick={handleLogout} className="logout-btn">
             🚪Salir
           </button>
         </nav>

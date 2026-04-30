@@ -17,7 +17,7 @@ body {
   max-width: 420px;
   margin: 0 auto;
   padding: 20px;
-  padding-bottom: 80px;
+  padding-bottom: 0;
 }
 
 .navbar {
@@ -50,17 +50,20 @@ body {
   transform: scale(1.2);
 }
 
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
-  padding: 10px 15px;
+.card-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
 }
 
+.page-header {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
 
-.logo-tfg {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
+.page-title {
+  margin: 0;
 }
