@@ -1,18 +1,29 @@
 .home-page {
-  max-width: 500px;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 20px;
+  background-color: #F5F7FA;
+  min-height: 100vh;
+  padding-bottom: 0;
 }
 
 /*Tarjeta pasos */
 .card {
-  background-color: white;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
   border: 1px solid #ddd;
 }
 
 /*Formulario pasos */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 .form input {
   width: 100%;
@@ -26,9 +37,9 @@
 .btn-primary {
   background-color: #4CAF50;
   color: white;
-  padding: 8px;
+  padding: 10px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   width: 100%;
 }
@@ -47,6 +58,29 @@
   background-color: white;
   padding: 10px;
   border-radius: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   border: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*Botón eliminar */
+.steps-list button {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.steps-list button:hover {
+  background: #e60000;
+}
+
+.header {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
 }

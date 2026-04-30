@@ -1,0 +1,54 @@
+.auth-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #4CAF50, #66bb6a);
+}
+
+/*Tarjeta autenticación */
+.auth-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 320px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.auth-card h1 {
+  margin-bottom: 20px;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-card input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/*Botón registro/login */
+.btn-primary {
+  background: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #45a049;
+}
+
+.toggle {
+  margin-top: 10px;
+  color: #4CAF50;
+  cursor: pointer;
+  font-size: 14px;
+}

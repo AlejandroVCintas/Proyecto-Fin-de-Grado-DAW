@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -19,9 +20,14 @@ public class StepsController : ControllerBase
     }
 
     // Se reciben datos del frontend y se guardan como registro
+    [Authorize]
     [HttpPost]
     public IActionResult Post(Step step)
     {
+        // Validación de datos antes de guardarlos
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
         return Ok(_service.Add(step));
     }
 
@@ -31,5 +37,33 @@ public class StepsController : ControllerBase
     {
         _service.Delete(id);
         return NoContent();
+    }
+
+    // Se actualizan los pasos según la ID.
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, Step step)
+    {
+        step.Id = id;
+        var updated = _service.Update(id, step);
+
+        // Si el campo esta vacío mandará un error.
+        if (updated == null)
+            return NotFound();
+
+        return Ok(updated);
+    }
+
+    // Se deuvuelven los pasos diarios
+    [HttpGet("today")]
+    public IActionResult GetToday()
+    {
+        return Ok(_service.GetToday());
+    }
+
+    // Se devuelven los pasos semanales
+    [HttpGet("week")]
+    public IActionResult GetWeek()
+    {
+        return Ok(_service.GetWeek());
     }
 }
